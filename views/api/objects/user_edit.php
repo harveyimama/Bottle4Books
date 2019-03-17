@@ -6,7 +6,12 @@ class User{
     private $conn;
     private $service_name = "login";
     private $ws;
- 
+   
+    //test
+  //  private $url = "http://172.21.7.57:8080/bfbServer/rest";
+    
+    //live
+    private $url = "http://testpay1.fetswallet.com/bfbServer/rest";
     // object properties
     public $id;
     public $username;
@@ -54,7 +59,7 @@ class User{
     // login user
     function login(){
 
-        $this->conn = $this->ws->getConnectionForm( "http://172.21.7.57:8080/bfbServer/rest/login","POST",
+        $this->conn = $this->ws->getConnectionForm( $this->url."/login","POST",
     "username=".$this->username."&password=".$this->password);
     
         $response = curl_exec($this->conn);

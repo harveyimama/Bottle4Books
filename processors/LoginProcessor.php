@@ -14,6 +14,10 @@ if(isset($_POST['admlogin']))
 
 	if($ret != null)
 	{
+	    session_start();
+	    $json = json_decode($ret, true);
+	    print_r($json);
+	    $_SESSION["id"] = 1; //$json[""];
 		header('location:index.php');
 	}
 	else

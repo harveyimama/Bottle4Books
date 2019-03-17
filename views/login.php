@@ -3,7 +3,7 @@
 
 <?php 
 include('includes/login_active.html');
-include('processors/LoginProcessor.php');
+require('../processors/LoginProcessor.php');
 ?>
 
 

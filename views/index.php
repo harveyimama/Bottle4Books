@@ -1,14 +1,11 @@
+<?php //require('../processors/featured.php'); ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
  <!-- The php code below includes the header, sliders and menus of the website    -->
  
-<?php 
-
-include('includes/header.html');
-include('processors/featured.php');
-
-?>
+<?php  include('includes/header.html'); ?>
 
 <div class="banner-area banner-res-large ptb-35">
 				<div class="container">
