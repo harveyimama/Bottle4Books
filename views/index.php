@@ -3,7 +3,12 @@
 
  <!-- The php code below includes the header, sliders and menus of the website    -->
  
-<?php include('includes/header.html');?>
+<?php 
+
+include('includes/header.html');
+include('processors/featured.php');
+
+?>
 
 <div class="banner-area banner-res-large ptb-35">
 				<div class="container">
@@ -37,7 +42,7 @@
 								</div>
 								<div class="banner-text">
 									<h4>Third Step</h4>
-									<p>Choose a kid to sponsor</p>
+									<p>Choose a kid's project to sponsor</p>
 								</div>
 							</div>
 						</div>
@@ -65,7 +70,7 @@
 										<h3>Did you know</h3>
 										<h3>You can send a child to school</h3>
 										<h3>WITH YOUR USED BOTTLES ?</h3>
-										<a href="#">Find Out More</a>
+										<a href="howitworks.php">Find Out More</a>
 									</div>
 								</div>
 							</div>
@@ -92,22 +97,22 @@
 					<div class="col-lg-12">
 						<div class="section-title text-center mb-50">
 							<h4>Oprah Winfrey</h4>
-							<p>“Education is the key to unlocking the world, a passport to freedom.”</p>
+							<p>â€œEducation is the key to unlocking the world, a passport to freedom.â€�</p>
 						</div>
 					</div>
 					<div class="col-lg-12">
 						<!-- tab-menu-start -->
 						<div class="tab-menu mb-40 text-center">
 							<ul>
-								<li class="active"><a href="#Audiobooks" data-toggle="tab">Sponsor a Male</a></li>
-								<li><a href="#books"  data-toggle="tab">Sponsor a Female</a></li>								
+								<li class="active"><a href="#Audiobooks" data-toggle="tab">Sponsor a Boy</a></li>
+								<li><a href="#books"  data-toggle="tab">Sponsor a Girl</a></li>								
 							</ul>
 						</div>
 						<!-- tab-menu-end -->
 					</div>
 				</div>
 				<!-- tab-area-start -->
-                
+               
                 
                 <div class="tab-content">
 					<div class="tab-pane active" id="Audiobooks">
@@ -437,13 +442,13 @@
                                 
 							<p>Paper (old newspapers, old textbooks, 
                                 corrugated cardboard, carton etc.), Glass bottles and Tires. 
-                                Our name ‘Chanja Datti’ is derived from the Hausa language and it 
-                                means ‘to change or transform dirt’. The name reflects the fact that 
+                                Our name â€˜Chanja Dattiâ€™ is derived from the Hausa language and it 
+                                means â€˜to change or transform dirtâ€™. The name reflects the fact that 
                                 our company was birthed and is located in the northern part of Nigeria, 
                                 and signifies our dedication to incorporating the local essence of 
                                 Northern Nigeria into our company. We are passionate about providing 
                                 high quality purified recycled products at very competitive prices to 
-                                meet our customers’ needs and expectations, giving us that competitive 
+                                meet our customersâ€™ needs and expectations, giving us that competitive 
                                 edge in the market.</p>
 							
 								</div>
