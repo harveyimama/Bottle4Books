@@ -108,7 +108,18 @@
     </footer>
     <!-- footer-area-end -->
     <!-- Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+    
+    
+       
+    <?php 
+	
+				    foreach ($projectArray as  $project) {
+				        
+				        $User = new User();
+				        $user = json_decode($User->getuser($project['id']));
+	?>
+	
+ <div class="modal fade" id="<?=$project['id']?>" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -142,11 +153,14 @@
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <div class="modal-pro-content">
-                                <h3>Chaz Kangeroo Hoodie3</h3>
+                                <h3><?=$user['fullname'] ?></h3>
                                 <div class="price">
-                                    <span>$70.00</span>
+                                    <span><?=$project['estinatedBottles']?> Bottles/span>
                                 </div>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>	
+                                <div class="price">
+                                    <span>N <?=$Project->getEstimatedAmount($project['estinatedBottles'])?>/span>
+                                </div>
+                                <p><?=$project['desc']?></p>	
                                 <div class="quick-view-select">
                                     <div class="select-option-part">
                                         <label>Size*</label>
@@ -169,13 +183,17 @@
                                 </div>
                                 <form action="#">
                                     <input type="number" value="1" />
-                                    <button>Add to cart</button>
+                                    <button>Pledge</button>
                                 </form>
                                 <span><i class="fa fa-check"></i> In stock</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                </div>
+         </div>
+   </div>
+             <?php  } ?>
+                            <!-- single-product-end -->
+                            <!-- single-product-start -->
+                          

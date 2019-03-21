@@ -45,8 +45,14 @@
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="account-area text-right">
 								<ul>
-									<li><a href="register.php">Register with us</a></li>									
-									<li><a href="login.php">Sign in</a></li>
+								<?php if(isset($_SESSION["id"])) {?>
+								<li><?=$_SESSION["name"]?></li>									
+									<li><a href="logout.php?task=lo">Sign out</a></li>
+								<?php }else{?>
+								<li><a href="register.php">Register with us</a></li>									
+									<li><a href="login.php" >Sign in</a></li>
+								<?php }?>
+									
 								</ul>
 							</div>
 						</div>
@@ -152,9 +158,7 @@
 										<li><a href="contact.php">Contact Us</a>
 											
 										</li>
-										<li><a href="#">Blog</a>
-											
-										</li>
+									
 										
 									</ul>
 								</nav>
@@ -196,9 +200,7 @@
 										<li><a href="contact.php">Contact Us</a>
 											
 										</li>
-										<li><a href="#">blog</a>
-											
-										</li>
+										
 										
 									</ul>
 								</nav>
@@ -209,8 +211,3 @@
 			</div>
 			<!-- mobile-menu-area-end -->
 		</header>
-
-		
-			<!-- banner-area-end -->
-			<!-- slider-area-start -->
-			

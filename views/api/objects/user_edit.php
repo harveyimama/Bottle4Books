@@ -8,10 +8,10 @@ class User{
     private $ws;
    
     //test
-  //  private $url = "http://172.21.7.57:8080/bfbServer/rest";
+  
     
     //live
-    private $url = "http://testpay1.fetswallet.com/bfbServer/rest";
+   // private $url = "http://testpay1.fetswallet.com/bfbServer/rest";
     // object properties
     public $id;
     public $username;
@@ -59,7 +59,7 @@ class User{
     // login user
     function login(){
 
-        $this->conn = $this->ws->getConnectionForm( $this->url."/login","POST",
+        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/login","POST",
     "username=".$this->username."&password=".$this->password);
     
         $response = curl_exec($this->conn);
@@ -67,7 +67,7 @@ class User{
         curl_close( $this->conn);
         
         if ($err) {
-          echo "cURL Error #:" . $err;
+            $_GET['message'] = "cURL Error #:" . $err;
           return null;
         } else {
         return $response;
@@ -75,6 +75,26 @@ class User{
         }
         
     }
+    
+    function getuser($id){
+        
+        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/getUser","GET",
+            "id=".$id);
+        
+        $response = curl_exec($this->conn);
+        $err = curl_error($this->conn);
+        curl_close( $this->conn);
+        
+        if ($err) {
+            $_GET['message'] = "cURL Error #:" . $err;
+            return null;
+        } else {
+            return $response;
+            
+        }
+        
+    }
+    
     function isAlreadyExist(){
         $query = "SELECT *
             FROM

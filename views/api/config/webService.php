@@ -4,6 +4,15 @@ class WebService{
  
 
     public $conn;
+    
+    
+    //live
+   // public $fetsurl = "http://testpay1.fetswallet.com/bfbServer/rest";
+    //test
+    public $fetsurl = "http://172.21.7.57:8080/bfbServer/rest";
+
+   
+  
  
     // get the database connection
     public function getConnectionForm($url,$type,$input){

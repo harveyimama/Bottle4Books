@@ -2,8 +2,8 @@
 <html class="no-js" lang="en">
 
 <?php 
+require('../processors/AuthProcessor.php');
 include('includes/login_active.html');
-require('../processors/LoginProcessor.php');
 ?>
 
 
@@ -50,6 +50,7 @@ require('../processors/LoginProcessor.php');
 							</div>
 							<a href="#">Lost your password?</a>
 						</div>
+						<input id="callback" type="hidden" name="callback" value="<?= basename($_SERVER['HTTP_REFERER']) ?>"> 
 						</form>
 					</div>
 				</div>

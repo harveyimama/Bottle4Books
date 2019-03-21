@@ -1,11 +1,14 @@
-<?php //require('../processors/featured.php'); ?>
+<?php 
+require('../processors/AuthProcessor.php'); 
+require('../processors/MessageProcessor.php'); 
+require ('api/objects/project.php');
+?>
 
 <!doctype html>
 <html class="no-js" lang="en">
 
- <!-- The php code below includes the header, sliders and menus of the website    -->
- 
-<?php  include('includes/header.html'); ?>
+<?php  include('includes/header.php'); 
+?>
 
 <div class="banner-area banner-res-large ptb-35">
 				<div class="container">
@@ -108,20 +111,34 @@
 						<!-- tab-menu-end -->
 					</div>
 				</div>
-				<!-- tab-area-start -->
-               
-                
-                <div class="tab-content">
+				
+				<div class="tab-content">
 					<div class="tab-pane active" id="Audiobooks">
                         <div class="tab-active owl-carousel">
-                            <!-- single-product-start -->
+				<?php 
+				
+				$Projects = new Project();
+				$ret = $Projects->getfeaturedprojects();
+				if ($ret != null) 
+				{ 
+				   $json = json_decode($ret, true);  
+				
+				if($json["responseCode"]==0)
+				{	
+				    $projectArray = $json['list'];
+				    foreach ($projectArray as  $project) {
+				        
+				        $User = new User();
+				        $user = json_decode($User->getuser($project['id']));
+				?>
+                             <!-- single-product-start -->
                             <div class="product-wrapper">
                                 <div class="product-img">
                                     <a href="#">
-                                        <img src="img/product/5.jpg" alt="book" class="primary" />
+                                        <img src="<?=$user['picture']?>" alt="book" class="primary" />
                                     </a>
                                     <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
+                                        <a class="action-view" href="#" data-target="#<?=$project['id']?>" data-toggle="modal" title="Quick View">
                                             <i class="fa fa-search-plus"></i>
                                         </a>
                                     </div>
@@ -130,262 +147,37 @@
                                 <div class="product-details text-center">
                                     <div class="product-rating">
                                         <ul>
-                                            <li><a href="#">Needs 30k for Primary Studies</a></li>                                            
+                                            <li><a href="#"><?=$project['name']?></a></li>                                            
                                         </ul>
                                     </div>
-                                    <h4><a href="#">Fatai Giwa</a></h4>
+                                    <h4><a href="#"><?=$user['fullname']?></a></h4>
                                     
-                                </div>
-                                	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/6.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 5k for text book</a></li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Salisu Altine</a></h4>
-                                    
-                                </div>
-                                	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/7.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 30k for exams</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Jubril Monday</a></h4>
-                                    
-                                </div>
-                                	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/8.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 50k for fees</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Moh'd Salis</a></h4>
-                                    
-                                </div>
-                                	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/9.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 70k for college</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Amos Buknor</a></h4>
-                                    
-                                </div>
-                                	
-                            </div>                           
-                        </div>
-                    </div>
-                    
-
-					<div class="tab-pane fade" id="books">
-                        <div class="tab-active owl-carousel">
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/1.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 100k for exams</a></li>                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Ronke Akibo</a></h4>                                   
                                 </div>
                                 	
                             </div>
                             
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/2.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 30k for school</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Grace Kibo</a></h4>                                    
-                                </div>
-                                	
-                            </div>
+                  <?php  } ?>
                             <!-- single-product-end -->
                             <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/3.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>                                    
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 40k for fees</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Altine Inawuoro</a></h4>                                    
-                                </div>
-                                <div class="product-link">                                    
-                                    
-                                </div>	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/4.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>                                   
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 40k for exams</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Nneka Tinde</a></h4>
-                                    
-                                </div>
-                                <div class="product-link">
-                                    <
-                                    <div class="add-to-link">
-                                        <ul>
-                                            <li><a href="product-details.html" title="Details"><i class="fa fa-external-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>	
-                            </div>
-                            <!-- single-product-end -->
-                            <!-- single-product-start -->
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <a href="#">
-                                        <img src="img/product/10.jpg" alt="book" class="primary" />
-                                    </a>
-                                    <div class="quick-view">
-                                        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-flag">
-                                       
-                                </div>
-                                <div class="product-details text-center">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#">Needs 10k for nursery</a></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Asabe Koko</a></h4>
-                                    
-                                </div>
-                                	
-                            </div>
-                  
-                        
+                          
+		
+		<?php }else{?>
+		
+		  
+                        No Records Found
+                        </div>
                     </div>
-                    
-				</div>
-				<!-- tab-area-end -->
-			</div>
-		</div>
+           </div>
+		
+		
+		<?php } } else{?>
+		
+                        No Records Found
+                        </div>
+                    </div>
+           </div>
+		
+		<?php }?>
 		<!-- product-area-end -->
 		<!-- Calulator -->        
             

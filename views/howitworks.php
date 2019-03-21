@@ -1,8 +1,14 @@
+<?php 
+require('../processors/AuthProcessor.php'); //require('../processors/featured.php');
+require('../processors/MessageProcessor.php'); 
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
+
+<?php  include('includes/header.php'); 
+?>
     
- <!-- The php code below includes the header, sliders and menus of the website    -->
- <?php include('includes/howitworks_active.html');?>
 
  <div class="breadcrumbs-area mb-70">
 			<div class="container">

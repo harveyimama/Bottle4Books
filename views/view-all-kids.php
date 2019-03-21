@@ -1,7 +1,13 @@
+<?php 
+require('../processors/AuthProcessor.php'); //require('../processors/featured.php');
+require('../processors/MessageProcessor.php'); 
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
-    
-<?php include('includes/view-all-kids_active.html'); ?>
+
+<?php  include('includes/header.php'); 
+?>
 
 		<!-- header-area-end -->
 		<!-- breadcrumbs-area-start -->
