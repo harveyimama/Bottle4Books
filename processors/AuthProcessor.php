@@ -35,7 +35,9 @@ if(!isset($_SESSION["id"]))
             }
         }
     }
-   
+    if (isset($_POST['needsLogin'])) {
+        echo "<script>alert('Login Required')</script>";
+    }
    
 }
 else {

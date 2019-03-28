@@ -3704,7 +3704,7 @@ nav.menu .cr-dropdown ul {
     color: #f07c29;
 }
 .left-menu ul li a:before {
-    content: "";
+    content: "ï„…";
     display: inline-block;
     font-family: "FontAwesome";
     font-size: 16px;
@@ -3990,7 +3990,7 @@ nav.menu .cr-dropdown ul {
     font-size: 66px!important;
 }
 .flex-direction-nav a.flex-next::before {
-    content: "";
+    content: "ï„…";
 }
 .flex-direction-nav a {
     height: 70px;
@@ -4954,7 +4954,7 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
-.single-register form input {
+.single-register input  {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
     box-shadow: none;
@@ -4966,7 +4966,7 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
-.single-register .chosen-select {
+.single-register  .chosen-select {
     height: 45px;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
@@ -4982,7 +4982,7 @@ nav.menu .cr-dropdown ul {
 .single-register input#billing_address_2 {
     margin-top: 15px;
 }
-.single-register-3 #rememberme {
+.single-register #rememberme {
     display: inline-block;
     float: left;
 }
@@ -4995,14 +4995,14 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
-.single-register-3 label a {
+.single-register label #reg {
     color: #F07C29;
     font-size: 14px;
     text-decoration: none;
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
-.single-register > a {
+.single-register > #reg {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
     box-shadow: none;
@@ -5016,7 +5016,7 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
-.single-register > a:hover {
+.single-register > #reg:hover {
     background-color: #F07C29;
     color: #fff;
     border: 1px solid #F07C29;
@@ -5667,7 +5667,7 @@ nav.menu .cr-dropdown ul {
 }
 .coupon-accordion h3::before {
     color: #1e85be;
-    content: "";
+    content: "ï„”";
     display: inline-block;
     font-family: fontawesome;
     left: 1.5em;
@@ -5987,7 +5987,7 @@ p.lost-password a:hover {
     margin-left: 15px;
 }
 .payment-accordion .panel-heading a::before {
-    content: "";
+    content: "ï�–";
     cursor: pointer;
     display: block;
     font-family: fontawesome;
@@ -5997,7 +5997,7 @@ p.lost-password a:hover {
     top: 0px;
 }
 .payment-accordion .panel-heading a.collapsed::before {
-    content: " ";
+    content: " ï�•";
 }
 .payment-accordion .panel-group .panel {
     margin-bottom: 20px;

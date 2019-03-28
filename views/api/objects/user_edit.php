@@ -78,8 +78,8 @@ class User{
     
     function getuser($id){
         
-        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/getUser","GET",
-            "id=".$id);
+        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/getUser?id=".$id,"GET",""
+           );
         
         $response = curl_exec($this->conn);
         $err = curl_error($this->conn);

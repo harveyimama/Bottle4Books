@@ -37,14 +37,14 @@ include('includes/login_active.html');
 						<div class="login-form">
 							<div class="single-login">
 								<label>Username or email<span>*</span></label>
-								<input type="text" name="admname" />
+								<input type="text" name="admname" required/>
 							</div>
 							<div class="single-login">
 								<label>Passwords <span>*</span></label>
-								<input type="password" name="admpass"/>
+								<input type="password" name="admpass" required/>
 							</div>
 							<div class="single-login single-login-2">
-								<input type="submit" name="admlogin">login</a>
+								<input type="submit" name="admlogin" value="login">
 								<input id="rememberme" type="checkbox" name="rememberme" value="forever">
 								<span>Remember me</span>
 							</div>
@@ -57,7 +57,7 @@ include('includes/login_active.html');
 			</div>
         </div>
         
-        <?php include('includes/footer.html'); ?>
+        <?php include('includes/footer.php'); ?>
 
         <script src="js/vendor/jquery-1.12.0.min.js"></script>
 		<!-- bootstrap js -->

@@ -1,13 +1,15 @@
 <?php 
-require('../processors/AuthProcessor.php'); 
-require('../processors/MessageProcessor.php'); 
-require ('api/objects/project.php');
+require_once('../processors/AuthProcessor.php'); 
+require_once('../processors/MessageProcessor.php'); 
+require_once ('api/objects/project.php');
+require_once ('api/objects/pledge.php');
 ?>
 
 <!doctype html>
 <html class="no-js" lang="en">
 
 <?php  include('includes/header.php'); 
+
 ?>
 
 <div class="banner-area banner-res-large ptb-35">
@@ -104,8 +106,8 @@ require ('api/objects/project.php');
 						<!-- tab-menu-start -->
 						<div class="tab-menu mb-40 text-center">
 							<ul>
-								<li class="active"><a href="#Audiobooks" data-toggle="tab">Sponsor a Boy</a></li>
-								<li><a href="#books"  data-toggle="tab">Sponsor a Girl</a></li>								
+								<li class="active"><a href="#Audiobooks" data-toggle="tab">Sponsor a Child</a></li>
+								<!-- <li><a href="#books"  data-toggle="tab">Sponsor a Girl</a></li> -->								
 							</ul>
 						</div>
 						<!-- tab-menu-end -->
@@ -121,15 +123,20 @@ require ('api/objects/project.php');
 				$ret = $Projects->getfeaturedprojects();
 				if ($ret != null) 
 				{ 
-				   $json = json_decode($ret, true);  
+				   $json = json_decode($ret, true);  				  
 				
 				if($json["responseCode"]==0)
 				{	
 				    $projectArray = $json['list'];
-				    foreach ($projectArray as  $project) {
-				        
+				    foreach ($projectArray as  $key) {
+				        $project =  $key["res"]; 
 				        $User = new User();
-				        $user = json_decode($User->getuser($project['id']));
+				       
+				        $user = json_decode($User->getuser($project['userId']),true);
+				      
+				        if ($user['responseCode'] == 0)
+				        {
+
 				?>
                              <!-- single-product-start -->
                             <div class="product-wrapper">
@@ -156,9 +163,14 @@ require ('api/objects/project.php');
                                 	
                             </div>
                             
-                  <?php  } ?>
+                  <?php 
+				        }
+				    }
+				    ?>
                             <!-- single-product-end -->
-                            <!-- single-product-start -->
+                   </div>
+                    </div>
+           </div>          <!-- single-product-start -->
                           
 		
 		<?php }else{?>
@@ -253,7 +265,7 @@ require ('api/objects/project.php');
         
         
         <!-- php code that includes the page's footer -->
-		<?php  include("includes/footer.html");?>
+		<?php  include("includes/footer.php");?>
 		
         <!-- Javascript code for calculator header_register_callback -->
 
@@ -338,6 +350,8 @@ require ('api/objects/project.php');
             }
             })
         </script>
+        
+   
         <!-- End of calculator function -->
 		
 		<!-- all js here -->

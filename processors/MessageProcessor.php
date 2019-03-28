@@ -7,7 +7,7 @@ if(isset($_GET['message']))
         echo "<script>alert('Logout succesful');</script>";   
     }
     else{
-        echo "<script>alert('Unknown Response');</script>"; 
+        echo "<script>alert('".$_GET['message'] ."');</script>"; 
     }
   
 }

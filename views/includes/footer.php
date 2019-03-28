@@ -112,11 +112,12 @@
     
        
     <?php 
-	
-				    foreach ($projectArray as  $project) {
-				        
+                    $Project = new Project();
+				    foreach ($projectArray as  $key) {
+				        $project = $key['res'];
 				        $User = new User();
-				        $user = json_decode($User->getuser($project['id']));
+				        $user = json_decode($User->getuser($project['userId']),true);
+				        $plegdeArray =  $project['pledgeId']; 
 	?>
 	
  <div class="modal fade" id="<?=$project['id']?>" tabindex="-1" role="dialog">
@@ -155,37 +156,100 @@
                             <div class="modal-pro-content">
                                 <h3><?=$user['fullname'] ?></h3>
                                 <div class="price">
-                                    <span><?=$project['estinatedBottles']?> Bottles/span>
+                                    <span><?=number_format($project['estinatedBottles'])?> Bottles	</span>| Needed
                                 </div>
-                                <div class="price">
-                                    <span>N <?=$Project->getEstimatedAmount($project['estinatedBottles'])?>/span>
-                                </div>
+                                <h2>
+                                  (N <?php $ret = json_decode( $Project->getEstimatedAmount($project['estinatedBottles']),true);
+                                    echo   number_format($ret['message']);
+                                    ?>)
+                                </h2>
                                 <p><?=$project['desc']?></p>	
+                                
+                                <?php if(isset($_SESSION["id"])) {?>
+                                <form method="POST"  action="../processors/PledgeProcessor.php">	
+                                <?php }else { ?>                                
+                                  <form method="POST" action="login.php">
+                                	<?php }?>
+                                	
                                 <div class="quick-view-select">
                                     <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">S</option>
-                                            <option value="">M</option>
-                                            <option value="">L</option>
+                                        <label>Options</label>
+                                        <select class="select" id="pledgeType" name="pledgeType">
+                                            <option value="1">Anonymous</option>
+                                            <option value="2">Identified</option>                                            
                                         </select>
                                     </div>
-                                    <div class="quickview-color-wrap">
-                                        <label>Color*</label>
+                                    
+                                </div>
+                               
+                                    <input style="width:100px"  placeholder="bottles" type="number" id="bottles" name="bottles" required/>
+                                    <input value="<?=$project['id']?>" type="hidden" id="id" name="id" />
+                                    <button id = "needsLogin"  name = "needsLogin">Pledge</button>
+                                </form>                               
+                                <hr/>
+                                <?php if(count($plegdeArray) > 0) {?>
+                                 <div class="quickview-color-wrap">
+                                        <label>Top Pledges</label>
+                                        <p/>
                                         <div class="quickview-color">
                                             <ul>
-                                                <li class="blue">b</li>
-                                                <li class="red">r</li>
-                                                <li class="pink">p</li>
+                                            <?php  
+                                            
+                                            $Pledge = new Pledge(); 
+                                            $totalPledged = 0;
+                                            $totalRedeemed = 0;
+                                            $i = 1;
+                                            
+                                            foreach ($plegdeArray as  $k) {                                                
+                                            $pledge = json_decode( $Pledge->getPledge($k),true);
+                                            $pledger  =  "Anonymous";
+                                            $colour = "blue";
+                                              
+                                            if($i==2)
+                                            {
+                                                $colour = "red";
+                                            }
+                                            elseif ($i==3)
+                                             {
+                                                 $colour = "pink";
+                                             }
+                                             elseif ($i==4)
+                                                {
+                                                    break;
+                                                }
+                                                
+                                                $i=$i+1;
+                                                
+                                             if($pledge['projectTypeId']!=1)
+                                             {
+                                                 $user = json_decode($User->getuser($pledge['adminId']),true); 
+                                                 if($user['responseCode']==0)
+                                                 $pledger =$user['fullname'];
+                                             }
+                                             
+                                             $totalPledged = $totalPledged +$pledge['bottles'];
+                                             
+                                             if($pledge['status'] ==0)
+                                                 $totalRedeemed = $totalRedeemed + $pledge['bottles'];
+                                             
+                                                ?>
+                                                <li class="<?=$colour?>"></li><?=$pledger?> | <?=number_format($pledge['bottles'])?>
+                                                <p/>
+                                             <?php
+                                            }
+                                                 }?>
                                             </ul>
                                         </div>
                                     </div>
+                                      <div class="quickview-color-wrap">
+                               <div class="price"><span><?=number_format($totalPledged)?> </span>| Pledged </div> 
+                               <div class="price"><span><?=number_format($totalRedeemed)?> </span>| Redeemed </div> 
+                                <?php if ($totalRedeemed >= $totalPledged) { ?>
+                                <span><i class="fa fa-check"></i> Target Met</span>
+                                  <?php }else {?>
+                                   <span><i class="fa fa-hand-pointer-o"></i> Open to Pledges</span>
+                                   <?php }?>
                                 </div>
-                                <form action="#">
-                                    <input type="number" value="1" />
-                                    <button>Pledge</button>
-                                </form>
-                                <span><i class="fa fa-check"></i> In stock</span>
                             </div>
                         </div>
                     </div>
