@@ -1,10 +1,11 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
 <?php 
-require('../processors/AuthProcessor.php');
+require_once('../processors/AuthProcessor.php');
+require_once('../processors/MessageProcessor.php'); 
 include('includes/login_active.html');
 ?>
+
+<!doctype html>
+<html class="no-js" lang="en">
 
 
 <div class="breadcrumbs-area mb-70">

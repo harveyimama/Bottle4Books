@@ -1,3 +1,7 @@
+<?php 
+require_once ('api/objects/project.php');
+?>
+</div>
 <footer>
         <!-- footer-top-start -->
         <div class="footer-top">

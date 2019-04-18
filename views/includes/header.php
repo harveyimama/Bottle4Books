@@ -47,8 +47,10 @@
 								<ul>
 								<?php if(isset($_SESSION["id"])) {?>
 								<li><?=$_SESSION["name"]?></li>									
-									<li><a href="logout.php?task=lo">Sign out</a></li>
-								<?php }else{?>
+									<li><a href="logout.php?task=lo">Sign out</a></li>									
+									<?php if ( $_SESSION["role"] == 1) {?>
+									<li><a href="registerProject.php">new Project</a></li>
+								<?php } }else{?>
 								<li><a href="register.php">Register with us</a></li>									
 									<li><a href="login.php" >Sign in</a></li>
 								<?php }?>

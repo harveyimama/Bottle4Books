@@ -7,9 +7,9 @@ class WebService{
     
     
     //live
-    public $fetsurl = "http://testpay1.fetswallet.com/bfbServer/rest";
+   //public $fetsurl = "http://testpay1.fetswallet.com/bfbServer/rest";
     //test
-   // public $fetsurl = "http://172.21.7.57:8080/bfbServer/rest";
+      public $fetsurl = "http://172.21.7.57:8080/bfbServer/rest";
 
    
    

@@ -4966,6 +4966,33 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
+
+
+.single-register select  {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #eceff8;
+    box-shadow: none;
+    color: #333;
+    font-size: 14px;
+    height: 45px;
+    padding-left: 10px;
+    width: 100%;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.single-register textarea  {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #eceff8;
+    box-shadow: none;
+    color: #333;
+    font-size: 14px;
+    height: 100px;
+    padding-left: 10px;
+    width: 100%;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
 .single-register  .chosen-select {
     height: 45px;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -5002,6 +5029,7 @@ nav.menu .cr-dropdown ul {
     font-family: 'Rufina', serif;
     font-weight: 400;
 }
+
 .single-register > #reg {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;

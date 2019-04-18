@@ -3,7 +3,7 @@ require('../processors/AuthProcessor.php'); //require('../processors/featured.ph
 require('../processors/MessageProcessor.php'); 
 ?>
 
-<!doctype html>
+<!doctype html>	
 <html class="no-js" lang="en">
 
 <?php  include('includes/header.php'); 
@@ -32,44 +32,95 @@ require('../processors/MessageProcessor.php');
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="login-title text-center mb-30">
-							<h2>Sign Up</h2>
-							<p>doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo<br>inventore veritatis et quasi architecto beat</p>
+							<h2>Register New Project</h2>
 						</div>
 					</div>
 					
 						
 						<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
 						<div class="billing-fields">
-						<form method="POST" action="../processors/RegistrationProcessor.php">	
+						<form method="POST" action="../processors/RegistrationProcessor.php"  enctype="multipart/form-data">	
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="single-register">																	
-											<label>Full Name<span>*</span></label>
-											<input type="text" name="fullname" required/>																			
+									<label class="btn btn-default btn-sm center-block btn-file">
+  									 <i class="fa fa-upload fa-2x" aria-hidden="true"> Upload Photo </i>                
+  									<input type="file" name="photo" id="photo" style="display: none;">
+									</label>															
+									</div>
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									
+								</div>
+							</div>	
+							<br/>
+							<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="single-register">								
+									<label>Project Type	<span>*</span></label>
+									<Select name="project_type" id="project_type" required>	
+											<option value=1>Education</option>
+											<option value=2>Health</option>
+											<option value=3>Other</option>
+											</Select>								
+							</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+							<div class="single-register">								
+									<label>Project Title	<span>*</span></label>
+									<input  type="text"  id="project_title" name="project_title" required/>								
+							</div>							
+							</div>
+							</div>					
+							<div class="single-register">									
+									<label>Project Description<span>*</span></label>
+									<Textarea  id="project_desc"  name="project_desc"   required></Textarea>								
+							</div>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="single-register">																	
+											<label>Project Cost<span>*</span></label>
+											<input type="text" name="project_cost" id="project_cost"  required/>																			
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="single-register">																	
+											<label>Project Due Date<span>*</span></label>
+											<input type="date" id="project_duedate"  name="project_duedate"  required/>																			
+									</div>
+								</div>
+							</div>		
+							<hr/>
+							<div class="single-register">								
+									<label>Benficiary Name<span>*</span></label>
+									<input  type="text"  id="beneficiary_name" name="beneficiary_name" required/>								
+							</div>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="single-register">																	
+											<label>Benficiary Dob<span>*</span></label>
+											<input type="date" name="beneficiary_dob"   id="beneficiary_dob"  required/>																			
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="single-register">										
-											<label>email<span>*</span></label>
-											<input type="email" name="email" required/>							
+											<label>Benficiary Gender<span>*</span></label>
+											<Select name="beneficiary_gender" id="beneficiary_gender" required>	
+											<option value=1>Male</option>
+											<option value=2>Female</option>
+											</Select>						
 									</div>
 								</div>
 							</div>												
 							<div class="single-register">									
-									<label>Account password<span>*</span></label>
-									<input type="password"  id="password" name="password" required/>								
+									<label>Benficiary Address<span>*</span></label>
+									<Textarea  name="beneficiary_address"  id="beneficiary_address" required></Textarea>								
 							</div>
-							<div class="single-register">								
-									<label>Confirm password<span>*</span></label>
-									<input  type="password"  id="confirm_password" name="confirm_password" required/>								
-							</div>
-							<div  style="display: inline-block;float: left;">
-								<input type="checkbox" value="forever" required/>
-								<label class="inline">I agree <a href="#">Terms & Condition</a></label>
-							</div>
+							
 							<br/><br/>
 							<div class="single-register">								
-								<input type="submit" name="reg_user" id ="reg_user" value="Register"/>								
+								<input type="submit" name="reg" id ="reg" value="Register"/>								
 							</div>
 							
 							</form>
@@ -194,22 +245,8 @@ require('../processors/MessageProcessor.php');
 			<!-- footer-bottom-end -->
 		</footer>
 		<!-- footer-area-end -->
-		<script>
-		var password = document.getElementById("password")
-		  , confirm_password = document.getElementById("confirm_password");
 
-		function validatePassword(){
-		  if(password.value != confirm_password.value) {
-		    confirm_password.setCustomValidity("Passwords Don't Match");
-		  } else {
-		    confirm_password.setCustomValidity('');
-		  }
-		}
-
-		password.onchange = validatePassword;
-		confirm_password.onkeyup = validatePassword;
-		</script>
-		
+	
 		<!-- all js here -->
 		<!-- jquery latest version -->
         <script src="js/vendor/jquery-1.12.0.min.js"></script>

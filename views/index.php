@@ -8,7 +8,8 @@ require_once ('api/objects/pledge.php');
 <!doctype html>
 <html class="no-js" lang="en">
 
-<?php  include('includes/header.php'); 
+<?php  
+include('includes/header.php'); 
 
 ?>
 
@@ -260,7 +261,7 @@ require_once ('api/objects/pledge.php');
                     </div>                    
 				</div>
 			</div>
-        </div>   
+        </div>   	
         
         
         

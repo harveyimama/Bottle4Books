@@ -23,39 +23,7 @@ class User{
         $this->ws = new WebService();
     }
     // signup user
-    function signup(){
-    
-        if($this->isAlreadyExist()){
-            return false;
-        }
-        // query to insert record
-        $query = "INSERT INTO
-                    " . $this->table_name . "
-                SET
-                    username=:username, password=:password, created=:created";
-    
-        // prepare query
-        $stmt = $this->conn->prepare($query);
-    
-        // sanitize
-        $this->username=htmlspecialchars(strip_tags($this->username));
-        $this->password=htmlspecialchars(strip_tags($this->password));
-        $this->created=htmlspecialchars(strip_tags($this->created));
-    
-        // bind values
-        $stmt->bindParam(":username", $this->username);
-        $stmt->bindParam(":password", $this->password);
-        $stmt->bindParam(":created", $this->created);
-    
-        // execute query
-        if($stmt->execute()){
-            $this->id = $this->conn->lastInsertId();
-            return true;
-        }
-    
-        return false;
-        
-    }
+   
     // login user
     function login(){
 
@@ -95,21 +63,46 @@ class User{
         
     }
     
-    function isAlreadyExist(){
-        $query = "SELECT *
-            FROM
-                " . $this->table_name . " 
-            WHERE
-                username='".$this->username."'";
-        // prepare query statement
-        $stmt = $this->conn->prepare($query);
-        // execute query
-        $stmt->execute();
-        if($stmt->rowCount() > 0){
-            return true;
+    function addbeneficiary($username,$password,$adminId,$picture,$dob,$address,$genderId,$fullname){
+        
+        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/RegisterBeneficiary","POST"
+            ,"username=$username&password=$password&adminId=$adminId&roleId=2&picture=$picture&email=$username&dob=$dob&address=$address&genderId=$genderId&fullname=$fullname"
+            );
+        
+        $response = curl_exec($this->conn);
+        $err = curl_error($this->conn);
+        curl_close( $this->conn);
+        
+        if ($err) {
+            $_GET['message'] = "cURL Error #:" . $err;
+            return null;
+        } else {
+            return $response;
+            
         }
-        else{
-            return false;
-        }
+        
     }
+    
+    
+    function adduser($email,$password,$adminId,$picture,$fullname){
+        
+        $this->conn = $this->ws->getConnectionForm( $this->ws->fetsurl."/RegisterUser","POST"
+            ,"username=$email&password=$password&adminId=$adminId&roleId=3&picture=$picture&email=$email&fullname=$fullname"
+            );
+        
+        $response = curl_exec($this->conn);
+        $err = curl_error($this->conn);
+        curl_close( $this->conn);
+        
+        if ($err) {
+            $_GET['message'] = "cURL Error #:" . $err;
+            return null;
+        } else {
+            return $response;
+            
+        }
+        
+    }
+    
+    
 }

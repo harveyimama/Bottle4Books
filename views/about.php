@@ -1,12 +1,14 @@
 <?php 
-require('../processors/AuthProcessor.php'); //require('../processors/featured.php');
-require('../processors/MessageProcessor.php'); 
+require_once('../processors/AuthProcessor.php'); //require('../processors/featured.php');
+require_once('../processors/MessageProcessor.php'); 
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
     
  <!-- The php code below includes the header, sliders and menus of the website    -->
  <?php  include('includes/header.php'); ?>
+
 
  <div class="breadcrumbs-area mb-70">
 			<div class="container">
